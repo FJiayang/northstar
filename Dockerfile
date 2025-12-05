@@ -5,9 +5,8 @@ FROM eclipse-temurin:21-jre
 RUN mkdir -p /northstar-dist
 WORKDIR /northstar-dist
 
-# 复制当前目录下的所有*.jar文件到工作目录
-COPY ./*.jar ./
-COPY ./*.json ./
+# 复制northstar-dist目录下的所有文件到工作目录
+COPY northstar-dist/ ./
 
 ENV NS_USER=admin
 ENV NS_PWD=123456
