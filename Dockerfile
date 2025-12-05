@@ -1,5 +1,5 @@
-# 使用官方CentOS 8基础映像
-FROM openjdk:21
+# 使用 Eclipse Temurin OpenJDK 21
+FROM eclipse-temurin:21-jre
 
 # 创建工作目录
 RUN mkdir -p /northstar-dist
