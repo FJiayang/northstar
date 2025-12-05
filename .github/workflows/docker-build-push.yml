@@ -35,12 +35,6 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build Frontend
-        working-directory: ./northstar-monitor
-        run: |
-          npm install --no-package-lock
-          npm run build
-
       - name: Build with Maven
         run: mvn -B package -DskipTests --file pom.xml
 
