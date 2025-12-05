@@ -38,7 +38,7 @@ jobs:
       - name: Build Frontend
         working-directory: ./northstar-monitor
         run: |
-          npm install --no-package-lock
+          npm install --no-package-lock --legacy-peer-deps
           npm run build
 
       - name: Build with Maven
