@@ -72,6 +72,7 @@
 			          <executable>npm</executable>
 			          <arguments>
 			            <argument>install</argument>
+			            <argument>--no-package-lock</argument>
 			          </arguments>
 			        </configuration>
 			      </execution>
