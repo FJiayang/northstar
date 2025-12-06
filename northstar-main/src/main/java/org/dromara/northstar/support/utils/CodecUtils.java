@@ -23,7 +23,13 @@ public class CodecUtils {
 		try {
 			if (tempSalt.exists()) {
 				salt = FileUtils.readFileToString(tempSalt, StandardCharsets.UTF_8);
-
+				// 检查文件是否为空或无效
+				if (salt == null || salt.trim().isEmpty()) {
+					log.warn("发现空的盐文件，重新生成随机盐");
+					Random r = new Random();
+					salt = String.format("%08d", r.nextInt(100000000));
+					FileUtils.write(tempSalt, salt, StandardCharsets.UTF_8);
+				}
 			} else {
 				if (tempSalt.createNewFile()) {
 					log.info("创建随机盐文件：{}", homeDir);
