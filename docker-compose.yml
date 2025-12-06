@@ -6,29 +6,14 @@ services:
     container_name: northstar
     restart: unless-stopped
     ports:
-      - "443:443"
+      - "30001:443"
       - "51688:51688"
     environment:
-      - NS_USER=admin
-      - NS_PWD=123456
+      - NS_USER=voting
+      - NS_PWD=JLxfPeXLT7JfM3
       - TZ=Asia/Shanghai
       - JAVA_OPTS=-Xms1g -Xmx2g -XX:+UseG1GC
     volumes:
-      - northstar_data:/northstar-dist/data
-      - ./logs:/northstar-dist/logs
-    networks:
-      - northstar_network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:51688/actuator/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
-
-tolumes:
-  northstar_data:
-    driver: local
-
-networks:
-  northstar_network:
-    driver: bridge
+      - /home/fjy/container/northstar/data:/northstar-dist/data
+      - /home/fjy/container/northstar/logs:/northstar-dist/logs
+      - /home/fjy/container/northstar/config/.northstar-salt:/root/.northstar-salt
